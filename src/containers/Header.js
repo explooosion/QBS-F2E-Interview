@@ -42,7 +42,8 @@ const Main = styled.div`
       text-transform: uppercase;
       color: ${p => p.theme.white};
 
-      &:hover {
+      &:hover,
+      &:focus {
         ${p => `text-stroke: 1px ${p.theme.white};`};
         ${p => `-webkit-text-stroke: 1px ${p.theme.white};`};
       }
