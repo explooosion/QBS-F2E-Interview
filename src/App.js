@@ -1,25 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.scss';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+
+import Routes from './routes';
+
+import Header from './containers/Header';
+import Footer from './containers/Footer';
+
+import { getProducts } from './services/Products';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProducts());
+  });
+
+  const renderRoute = route => {
+    const { key, path, exact, component: Component, title } = route;
+    return (
+      <Route
+        key={key}
+        exact={exact}
+        path={path}
+        title={title}
+        render={props => (
+          <div>
+            <Helmet>
+              <title>{title}</title>
+            </Helmet>
+            <Component {...props} />
+          </div>
+        )}
+      />
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <Switch>
+        {Routes.map(renderRoute)}
+      </Switch>
+      <Footer />
+    </Router>
   );
 }
 
