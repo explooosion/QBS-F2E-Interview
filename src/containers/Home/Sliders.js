@@ -88,6 +88,7 @@ const Main = styled.section`
 
 const Slider = styled(ReactSlick)`
   margin: 0 auto;
+  max-width: 1600px;
 `;
 
 const Wrapper = styled.div`
@@ -392,25 +393,13 @@ function Sliders(props) {
     autoplay: false,
     arrows: true,
     dots: false,
-    draggable: false,
+    draggable: true,
     infinite: true,
-    slidesToShow: 5,
+    slidesToShow: 4,
     slidesToScroll: 1,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
     responsive: [
-      {
-        breakpoint: 1600,
-        settings: {
-          slidesToShow: 5,
-        },
-      },
-      {
-        breakpoint: 1500,
-        settings: {
-          slidesToShow: 4,
-        },
-      },
       {
         breakpoint: 1200,
         settings: {
