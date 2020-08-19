@@ -34,18 +34,73 @@ const Main = styled.section`
     }
 
     &[data-type='prev'] {
-      right: 5.6%;
+      right: 90px;
     }
 
     &[data-type='next'] {
-      right: 1.5%;
+      right: 40px;
     }
   }
+
+  @media only screen and (max-width: ${p => p.theme.screenLg}) {
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    svg.arrow {
+      top: -10%;
+    }
+  }
+
+  @media only screen and (max-width: ${p => p.theme.screenSm}) {
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    svg.arrow {
+      &[data-type='prev'] {
+        right: 70px;
+      }
+
+      &[data-type='next'] {
+        right: 20px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: ${p => p.theme.screenXxs}) {
+    h1 {
+      margin-left: 1rem;
+      font-size: 1.2rem;
+    }
+
+    svg.arrow {
+      &[data-type='prev'] {
+        right: 70px;
+      }
+
+      &[data-type='next'] {
+        right: 20px;
+      }
+    }
+  }
+`;
+
+const Slider = styled(ReactSlick)`
+  margin: 0 auto;
 `;
 
 const Wrapper = styled.div`
   height: 490px;
   outline: none;
+
+  @media only screen and (max-width: ${p => p.theme.screenSm}) {
+    height: 600px;
+  }
+
+  @media only screen and (max-width: ${p => p.theme.screenXxs}) {
+    height: 650px;
+  }
 `;
 
 const Slide = styled.div`
@@ -53,7 +108,7 @@ const Slide = styled.div`
   flex-direction: column;
   margin: 10px auto 0;
   width: 270px;
-  height: 470px;
+  height: 95%;
   outline: none;
   box-shadow: 0 2px 5px 2px ${p => p.theme.gray};
   ${transitions('box-shadow .2s')};
@@ -67,7 +122,7 @@ const Slide = styled.div`
     display: flex;
     align-items: flex-end;
     padding: 1rem;
-    width: inherit;
+    width: 100%;
     height: 100%;
     color: ${p => p.theme.black};
 
@@ -83,7 +138,7 @@ const Slide = styled.div`
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      width: inherit;
+      width: 100%;
       height: inherit;
       color: ${p => p.theme.white};
       background-color: ${p => rgba(p.theme.lightGrape, 0.9)};
@@ -114,15 +169,19 @@ const Slide = styled.div`
       }
 
       > div {
+        display: table;
         margin-bottom: .5rem;
-        width: inherit;
+        width: 100%;
       }
 
       span {
-        display: inline-block;
-        margin-right: .5rem;
+        display: table-cell;
         width: 50%;
         text-align: right;
+      }
+
+      b {
+        padding-left: .5rem;
       }
     }
 
@@ -140,7 +199,7 @@ const Slide = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    width: inherit;
+    width: 100%;
     height: 80px;
     background-color: ${p => p.theme.lightGrape};
 
@@ -164,6 +223,39 @@ const Slide = styled.div`
         background-color: ${p => p.theme.lightGray};
         cursor: default;
       }
+    }
+  }
+
+  @media only screen and (max-width: ${p => p.theme.screenSm}) {
+    width: 90%;
+
+    .body .detail {
+      top: 55%;
+      left: 5px;
+      justify-content: flex-start;
+      height: auto;
+      color: ${p => p.theme.black};
+      background-color: transparent;
+      opacity: 1;
+
+      &::before,
+      &::after {
+        display: none;
+      }
+
+      span {
+        width: 25%;
+      }
+
+      b {
+        font-weight: normal;
+      }
+    }
+  }
+
+  @media only screen and (max-width: ${p => p.theme.screenXxs}) {
+    .body .detail {
+      left: 15px;
     }
   }
 `;
@@ -217,6 +309,10 @@ const BlockName = styled.div`
   height: 55%;
   font-size: 1.3rem;
   font-family: 'Times New Roman', Times, serif;
+
+  @media only screen and (max-width: ${p => p.theme.screenSm}) {
+    height: 40%;
+  }
 `;
 
 const BlockScores = styled.div`
@@ -251,7 +347,7 @@ const BlockScores = styled.div`
 
 const BlockStock = styled.div`
   position: absolute;
-  bottom: 22%;
+  bottom: 18%;
   display: block;
   font-size: 1.1rem;
   font-weight: bold;
@@ -270,7 +366,8 @@ const BlockPriceOnSale = styled.div`
   font-weight: bold;
   color: ${p => p.theme.red};
 
-  ~ div {
+  + div {
+    font-weight: normal;
     text-decoration-line: line-through;
   }
 `;
@@ -390,9 +487,9 @@ function Sliders(props) {
   return (
     <Main>
       <h1>{title}</h1>
-      <ReactSlick {...defaultOptions}>
+      <Slider {...defaultOptions}>
         {renderTopPicksSliders()}
-      </ReactSlick>
+      </Slider>
     </Main>
   );
 }
