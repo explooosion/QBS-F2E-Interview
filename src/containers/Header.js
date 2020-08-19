@@ -287,7 +287,7 @@ function Header() {
     :
     [
       { to: '/', name: 'LOG IN / REGISTER' },
-      { to: '/shop', name: 'SHOP' },
+      { to: '/', name: 'SHOP' },
       { to: '/', name: 'PROMOTIONS' },
       { to: '/', name: 'EVENTS' },
       { to: '/', name: 'ABOUT US' },
