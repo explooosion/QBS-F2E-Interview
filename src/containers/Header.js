@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { rgba } from 'polished';
+import { rgba, transitions } from 'polished';
 import { useWindowScroll, useWindowSize } from 'react-use';
 import { AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai';
 import { GiHamburgerMenu } from 'react-icons/gi';
@@ -52,6 +52,10 @@ const Main = styled.nav`
         ${p => `-webkit-text-stroke: 1px ${p.theme.white};`};
       }
     }
+
+    .mask {
+      display: none;
+    }
   }
 
   @media only screen and (max-width: ${p => p.theme.screenLg}) {
@@ -66,11 +70,22 @@ const Main = styled.nav`
     > nav {
       position: absolute;
       top: 0;
-      left: 0;
-      display: none;
+      left: -100%;
       margin-top: 0;
       width: 100vw;
       height: 100vh;
+      ${transitions('left .5s ease-in-out')};
+
+      .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        box-shadow: none;
+      }
 
       > div {
         position: absolute;
@@ -95,7 +110,7 @@ const Main = styled.nav`
       }
 
       &.toggled {
-        display: block;
+        left: 0;
       }
 
       a {
@@ -272,7 +287,7 @@ function Header() {
     :
     [
       { to: '/', name: 'LOG IN / REGISTER' },
-      { to: '/', name: 'SHOP' },
+      { to: '/shop', name: 'SHOP' },
       { to: '/', name: 'PROMOTIONS' },
       { to: '/', name: 'EVENTS' },
       { to: '/', name: 'ABOUT US' },
@@ -311,12 +326,12 @@ function Header() {
 
       <img src={logo} alt="" />
 
-      {/* 用全螢幕遮罩做為選單開關 */}
       <nav
         className={navToggle ? 'toggled' : ''}
-        onClick={() => setNavToggle(false)}
       >
-        <div onClick={() => setNavToggle(true)}>
+        {/* 用全螢幕遮罩做為選單開關 */}
+        <div className="mask" onClick={() => setNavToggle(false)}></div>
+        <div>
           <NavClosed onClick={() => setNavToggle(false)} />
           {renderNavs()}
         </div>
@@ -332,7 +347,7 @@ function Header() {
           <Link className="tool-cart" to="/" data-amount="2"><AiOutlineShoppingCart /></Link>
         </div>
       </NavRight>
-    </Main >
+    </Main>
   );
 }
 
