@@ -11,6 +11,8 @@ const Main = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 1rem;
+    width: calc(100% / 3);
 
     > h3 {
       margin: .5rem 0;
@@ -21,8 +23,14 @@ const Main = styled.section`
 
     > p {
       margin: 0;
-      width: 280px;
+      max-width: 280px;
       text-align: center;
+    }
+  }
+
+  @media only screen and (max-width: ${p => p.theme.screenSm}) {
+    > div > img {
+      width: 100%;
     }
   }
 `;
