@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { rgba } from 'polished';
-import { useWindowScroll } from 'react-use';
+import { useWindowScroll, useWindowSize } from 'react-use';
 import { AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { GrFormClose } from 'react-icons/gr';
+
+import Screen from '../utils/Screen';
 
 const Main = styled.div`
   position: fixed;
@@ -21,7 +25,7 @@ const Main = styled.div`
   &.minify {
     height: 80px;
 
-    img {
+    > img {
       position: absolute;
       top: 1.2rem;
       left: 2.5rem;
@@ -49,12 +53,66 @@ const Main = styled.div`
       }
     }
   }
+
+  @media only screen and (max-width: ${p => p.theme.screenLg}) {
+    flex-direction: row;
+    height: 70px;
+    background-color: ${p => p.theme.lightGray};
+
+    > img {
+      height: 60px;
+    }
+
+    > nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+      margin-top: 0;
+      width: 100vw;
+      height: 100vh;
+
+      > div {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        overflow-y: scroll;
+        margin-top: 0;
+        padding: 1.5rem;
+        width: 80%;
+        height: calc(100vh - 70px - 1.5rem * 3);
+        background-color: #fff;
+        box-shadow: 0 2px 10px ${p => p.theme.black};
+      }
+
+      &.toggled {
+        display: block;
+      }
+
+      a {
+        display: block;
+        padding: .5rem 0;
+        font-weight: bold;
+        color: ${p => p.theme.black};
+
+        &:hover,
+        &:focus {
+          ${`text-stroke: 0;`};
+          ${`-webkit-text-stroke: 0;`};
+        }
+      }
+    }
+  }
 `;
 
 const NavLeft = styled.div`
   position: absolute;
   top: 2rem;
   left: 2.5rem;
+
+  @media only screen and (max-width: ${p => p.theme.screenLg}) {
+    display: none;
+  }
 
   span {
     display: block;
@@ -123,27 +181,111 @@ const NavRight = styled.div`
       }
     }
   }
+
+  @media only screen and (max-width: ${p => p.theme.screenLg}) {
+    top: 1rem;
+    right: 1.5rem;
+
+    .login-bar {
+      display: none;
+    }
+
+    .tool-bar .tool-search {
+      display: none;
+    }
+
+    .tool-bar .tool-cart {
+      color: ${p => p.theme.black};
+    }
+  }
+`;
+
+const NavToggler = styled(GiHamburgerMenu)`
+  position: absolute;
+  top: .85rem;
+  left: 1.5rem;
+  display: block;
+  padding: .5rem;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  color: ${p => p.theme.white};
+  background-color: #000;
+  border-radius: 100%;
+  outline: none;
+  cursor: pointer;
+
+  &:focus ~ nav {
+    display: block;
+  }
+
+  @media only screen and (min-width: ${p => p.theme.screenLg}) {
+    display: none;
+  }
+`;
+
+const NavClosed = styled(GrFormClose)`
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  font-size: 2.25rem;
+  color: ${p => p.theme.black};
+  cursor: pointer;
+
+  @media only screen and (min-width: ${p => p.theme.screenLg}) {
+    display: none;
+  }
+`;
+
+const Line = styled.hr`
+  width: 100%;
+  border: 1.5px solid ${p => p.theme.lightGray};
 `;
 
 function Header() {
 
-  const { y } = useWindowScroll();
+  const [navToggle, setNavToggle] = useState(false);
 
-  const navs = [
-    { to: '/', name: 'SHOP' },
-    { to: '/', name: 'PROMOTIONS' },
-    { to: '/', name: 'EVENTS' },
-    { to: '/', name: 'ABOUT US' },
-    { to: '/', name: 'CONTACT' },
-  ]
+  const { y } = useWindowScroll();
+  const { width } = useWindowSize();
+
+  const navs = width > Screen.lg ?
+    [
+      { to: '/', name: 'SHOP' },
+      { to: '/', name: 'PROMOTIONS' },
+      { to: '/', name: 'EVENTS' },
+      { to: '/', name: 'ABOUT US' },
+      { to: '/', name: 'CONTACT' },
+    ]
+    :
+    [
+      { to: '/', name: 'LOG IN / REGISTER' },
+      { to: '/', name: 'SHOP' },
+      { to: '/', name: 'PROMOTIONS' },
+      { to: '/', name: 'EVENTS' },
+      { to: '/', name: 'ABOUT US' },
+      { to: '/', name: 'CONTACT' },
+      { to: '/', name: '-' },
+      { to: '/', name: 'PRIVACY & POLICY' },
+      { to: '/', name: 'TERMS OF USE' },
+      { to: '/', name: 'COOKIES POLICY' },
+      { to: '/', name: 'FAQ' },
+      { to: '/', name: 'SEARCH' },
+    ];
 
   const renderNavs = () => {
     return navs.map(({ to, name }, index) =>
-      <Link key={`nav-${index}`} to={to}>{name}</Link>
+      name === '-'
+        ? <Line key={`nav-${index}`} />
+        : <Link key={`nav-${index}`} to={to}>{name}</Link>
     );
   }
 
-  const mode = (y > 20) ? 'minify' : '';
+  const mode = (y > 20 && width > Screen.lg) ? 'minify' : '';
+
+  const logo = width > Screen.lg
+    ? './assets/ponti-wine-cellars-logo-1589532960.jpg.png'
+    : './assets/ponti_wine_cellars-logo BLACK.png';
 
   return (
     <Main className={mode}>
@@ -153,8 +295,20 @@ function Header() {
         <span><b>EMAIL</b>enquiries@pontiwinecellars.com</span>
       </NavLeft>
 
-      <img src="./assets/ponti-wine-cellars-logo-1589532960.jpg.png" alt="" />
-      <nav>{renderNavs()}</nav>
+      <NavToggler onClick={() => setNavToggle(!navToggle)} />
+
+      <img src={logo} alt="" />
+
+      {/* 用全螢幕遮罩做為選單開關 */}
+      <nav
+        className={navToggle ? 'toggled' : ''}
+        onClick={() => setNavToggle(false)}
+      >
+        <div onClick={() => setNavToggle(true)}>
+          <NavClosed onClick={() => setNavToggle(false)} />
+          {renderNavs()}
+        </div>
+      </nav>
 
       <NavRight className={mode}>
         <div className="login-bar">
@@ -162,8 +316,8 @@ function Header() {
           <Link to="/">Register</Link>
         </div>
         <div className="tool-bar">
-          <Link to="/"><AiOutlineSearch /></Link>
-          <Link to="/" data-amount="2"><AiOutlineShoppingCart /></Link>
+          <Link className="tool-search" to="/"><AiOutlineSearch /></Link>
+          <Link className="tool-cart" to="/" data-amount="2"><AiOutlineShoppingCart /></Link>
         </div>
       </NavRight>
     </Main >
