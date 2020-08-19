@@ -31,6 +31,12 @@ const Main = styled.section`
       right: 20px;
     }
   }
+
+  @media only screen and (max-width: ${p => p.theme.screenLg}) {
+    svg.arrow {
+      font-size: 3rem;
+    }
+  }
 `;
 
 const Slider = styled(ReactSlick)`
@@ -86,6 +92,42 @@ const Form = styled.div`
 
     &:hover {
       background-color: ${p => rgba(darken(0.1, p.theme.gray), .9)};
+    }
+  }
+
+  @media only screen and (max-width: ${p => p.theme.screenLg}) {
+    top: 35%;
+    right: 0;
+    width: 100%;
+    text-align: center;
+
+    a {
+      margin: 10rem auto 0;
+    }
+  }
+
+  @media only screen and (max-width: ${p => p.theme.screenSm}) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 1rem;
+    }
+  }
+
+  @media only screen and (max-width: ${p => p.theme.screenXxs}) {
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      font-size: .75rem;
+    }
+
+    a {
+      margin-top: 7rem;
     }
   }
 `;
