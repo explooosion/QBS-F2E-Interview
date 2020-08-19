@@ -231,7 +231,7 @@ const Slide = styled.div`
 
     .body .detail {
       top: 55%;
-      left: 5px;
+      left: 15px;
       justify-content: flex-start;
       height: auto;
       color: ${p => p.theme.black};
@@ -244,18 +244,13 @@ const Slide = styled.div`
       }
 
       span {
-        width: 25%;
+        width: 26%;
+        text-align: left;
       }
 
       b {
         font-weight: normal;
       }
-    }
-  }
-
-  @media only screen and (max-width: ${p => p.theme.screenXxs}) {
-    .body .detail {
-      left: 15px;
     }
   }
 `;

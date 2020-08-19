@@ -8,12 +8,13 @@ const Main = styled.section`
   justify-content: space-between;
   margin-top: 7rem;
   padding: 1rem 4rem;
-  width: 100vw;
+  width: 100%;
   background-color: ${p => p.theme.rice};
 
   @media only screen and (max-width: ${p => p.theme.screenMd}) {
     flex-direction: column;
     align-items: center;
+    padding: 1rem 2rem;
   }
 `;
 
@@ -101,6 +102,10 @@ const RAside = styled(Aside)`
       button {
         margin: .5rem auto 0;
       }
+    }
+
+    .links svg {
+      font-size: 2.5rem;
     }
   }
 `;

@@ -43,7 +43,7 @@ function App() {
       <Switch>
         {Routes.map(renderRoute)}
       </Switch>
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   );
 }

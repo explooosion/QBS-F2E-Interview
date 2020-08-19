@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import _ from 'lodash';
 
 import HR from '../components/HR';
+import TopTips from '../components/TopTips';
 
 import Carousel from '../containers/Home/Carousel';
 import Features from '../containers/Home/Features';
@@ -21,8 +22,10 @@ const Main = styled.main`
 
 function Home() {
   const { lists } = useSelector(state => state.products);
+  const tips = 'Free shipping for over $1,000';
   return (
     <Main>
+      <TopTips text={tips} />
       <Carousel />
       <Features />
       <HR style={{ width: '60%' }} />

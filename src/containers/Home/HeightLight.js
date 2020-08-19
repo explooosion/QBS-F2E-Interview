@@ -63,6 +63,18 @@ const Main = styled.section`
       }
     }
   }
+
+  @media only screen and (max-width: ${p => p.theme.screenMd}) {
+    > div {
+      height: 200px;
+    }
+  }
+
+  @media only screen and (max-width: ${p => p.theme.screenSm}) {
+    > div {
+      height: 150px;
+    }
+  }
 `;
 
 function Features() {

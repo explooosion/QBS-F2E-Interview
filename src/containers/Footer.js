@@ -13,6 +13,15 @@ const Main = styled.footer`
   display: flex;
   justify-content: space-between;
   padding: 1rem 4rem;
+
+
+  @media only screen and (max-width: ${p => p.theme.screenLg}) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    text-align: center;
+  }
 `;
 
 const LAside = styled.aside`
@@ -32,7 +41,7 @@ const LAside = styled.aside`
     }
 
     nav {
-      font-size: 1rem;
+      font-size: 14px;
 
       a {
         text-decoration: none;
@@ -45,6 +54,21 @@ const LAside = styled.aside`
       }
     }
   }
+
+  @media only screen and (max-width: ${p => p.theme.screenXl}) {
+    > div {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+    }
+  }
+
+  @media only screen and (max-width: ${p => p.theme.screenLg}) {
+    margin-bottom: 1rem;
+
+    > div {
+      display: none;
+    }
+  }
 `;
 
 const RAside = styled.nav`
@@ -52,7 +76,7 @@ const RAside = styled.nav`
   align-items: center;
 
   img {
-    margin-left: .25rem;
+    margin-left: .5rem;
     width: 60px;
     height: 38px;
 
@@ -60,6 +84,14 @@ const RAside = styled.nav`
       border: 1px solid ${p => p.theme.black};
       border-radius: .25rem;
     }
+  }
+
+  @media only screen and (max-width: ${p => p.theme.screenSm}) {
+    img {
+      width: 40px;
+      height: 28px;
+    }
+
   }
 `;
 
