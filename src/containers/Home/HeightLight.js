@@ -17,6 +17,7 @@ const Main = styled.section`
     text-align: center;
     background-repeat: no-repeat;
     background-size: cover;
+    border: 1px solid ${p => rgba(p.theme.black, .6)};
 
     > span {
       display: flex;
@@ -67,7 +68,7 @@ const Main = styled.section`
 function Features() {
 
   const heightLights = [
-    { image: './assets/heightlight-desktop-1.png', title: 'Shop Promotions', descript: 'Checkout the latest offers in shops!' },
+    { image: './assets/heightlight-desktop-1.png', title: 'Shop Promotions', descript: 'Check out the latest offers in shops!' },
     { image: './assets/heightlight-desktop-2.png', title: 'Smart Buys', descript: 'Well-priced, high-quality wines!' },
     { image: './assets/heightlight-desktop-3.png', title: 'Top Rated Wines', descript: 'Wine scores 90 points or higher!' },
     { image: './assets/heightlight-desktop-4.png', title: 'Events', descript: 'What is happening now!' },

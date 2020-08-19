@@ -189,6 +189,10 @@ const NavRight = styled.div`
       display: none;
     }
 
+    .tool-bar a[data-amount]::before {
+      color: ${p=>p.theme.white};
+    }
+
     .tool-bar .tool-search {
       display: none;
     }

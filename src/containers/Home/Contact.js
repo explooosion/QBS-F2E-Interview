@@ -10,11 +10,22 @@ const Main = styled.section`
   padding: 1rem 4rem;
   width: 100vw;
   background-color: ${p => p.theme.rice};
+
+  @media only screen and (max-width: ${p => p.theme.screenMd}) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const Aside = styled.aside`
   display: flex;
   flex-direction: column;
+
+  @media only screen and (max-width: ${p => p.theme.screenMd}) {
+    align-items: center;
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 const LAside = styled(Aside)`
@@ -80,6 +91,16 @@ const RAside = styled(Aside)`
     svg {
       font-size: 3.5rem;
       cursor: pointer;
+    }
+  }
+
+  @media only screen and (max-width: ${p => p.theme.screenMd}) {
+    .email {
+      width: 100%;
+
+      button {
+        margin: .5rem auto 0;
+      }
     }
   }
 `;
