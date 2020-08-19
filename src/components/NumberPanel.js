@@ -9,18 +9,19 @@ const Main = styled.div`
 
   > input {
     padding: 0 20px;
-    width: 70px;
+    width: 75px;
     height: 25px;
     text-align: center;
     border: 0;
+    border-radius: 0;
     outline: none;
   }
 
   > button {
     position: absolute;
-    top: 1px;
+    top: 2px;
     width: 20px;
-    height: 23px;
+    height: 22px;
     color: ${p => p.theme.white};
     background-color: ${p => p.theme.lightGrape};
     border: 0;
