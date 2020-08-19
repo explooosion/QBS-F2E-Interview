@@ -11,7 +11,7 @@ import HeightLight from '../containers/Home/HeightLight';
 import Sliders from '../containers/Home/Sliders';
 import Contact from '../containers/Home/Contact';
 
-const Main = styled.div`
+const Main = styled.main`
   position: relative;
   overflow: hidden;
 

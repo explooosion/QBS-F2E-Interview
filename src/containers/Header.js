@@ -9,7 +9,7 @@ import { GrFormClose } from 'react-icons/gr';
 
 import Screen from '../utils/Screen';
 
-const Main = styled.div`
+const Main = styled.nav`
   position: fixed;
   top: 0;
   display: flex;

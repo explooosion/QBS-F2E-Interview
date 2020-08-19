@@ -26,12 +26,12 @@ function App() {
         path={path}
         title={title}
         render={props => (
-          <div>
+          <>
             <Helmet>
               <title>{title}</title>
             </Helmet>
             <Component {...props} />
-          </div>
+          </>
         )}
       />
     );
@@ -43,7 +43,7 @@ function App() {
       <Switch>
         {Routes.map(renderRoute)}
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }
