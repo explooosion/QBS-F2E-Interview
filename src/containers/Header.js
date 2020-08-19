@@ -92,7 +92,6 @@ const Main = styled.div`
       a {
         display: block;
         padding: .5rem 0;
-        font-weight: bold;
         color: ${p => p.theme.black};
 
         &:hover,
