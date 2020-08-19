@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import { Switch, HashRouter as Router, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 import Routes from './routes';
