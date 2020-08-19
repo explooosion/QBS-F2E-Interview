@@ -80,9 +80,18 @@ const Main = styled.nav`
         margin-top: 0;
         padding: 1.5rem;
         width: 80%;
-        height: calc(100vh - 70px - 1.5rem * 3);
+        height: calc(100vh - 70px);
         background-color: #fff;
         box-shadow: 0 2px 10px ${p => p.theme.black};
+
+        &::-webkit-scrollbar {
+          width: 6px;
+          background-color: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: ${p => p.theme.gray};
+        }
       }
 
       &.toggled {
@@ -190,7 +199,7 @@ const NavRight = styled.div`
     }
 
     .tool-bar a[data-amount]::before {
-      color: ${p=>p.theme.white};
+      color: ${p => p.theme.white};
     }
 
     .tool-bar .tool-search {
