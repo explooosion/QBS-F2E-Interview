@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/QBS-F2E-Interview/static/css/main.ccd4d8be.chunk.css",
+    "main.js": "/QBS-F2E-Interview/static/js/main.3f10932d.chunk.js",
+    "runtime-main.js": "/QBS-F2E-Interview/static/js/runtime-main.ce145c53.js",
+    "static/css/2.8fe7522e.chunk.css": "/QBS-F2E-Interview/static/css/2.8fe7522e.chunk.css",
+    "static/js/2.42a2d28b.chunk.js": "/QBS-F2E-Interview/static/js/2.42a2d28b.chunk.js",
+    "index.html": "/QBS-F2E-Interview/index.html",
+    "precache-manifest.7c8e4a03c9909f7c7e4551adb6a7e985.js": "/QBS-F2E-Interview/precache-manifest.7c8e4a03c9909f7c7e4551adb6a7e985.js",
+    "service-worker.js": "/QBS-F2E-Interview/service-worker.js",
+    "static/js/2.42a2d28b.chunk.js.LICENSE.txt": "/QBS-F2E-Interview/static/js/2.42a2d28b.chunk.js.LICENSE.txt",
+    "static/media/alipay.svg": "/QBS-F2E-Interview/static/media/alipay.4ab6d405.svg",
+    "static/media/mastercard-old.svg": "/QBS-F2E-Interview/static/media/mastercard-old.17be717f.svg",
+    "static/media/paypal.svg": "/QBS-F2E-Interview/static/media/paypal.4bc44e56.svg",
+    "static/media/unionpay.svg": "/QBS-F2E-Interview/static/media/unionpay.e80816ad.svg",
+    "static/media/verve.svg": "/QBS-F2E-Interview/static/media/verve.14c638ba.svg",
+    "static/media/visa.svg": "/QBS-F2E-Interview/static/media/visa.bca381c0.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ce145c53.js",
+    "static/css/2.8fe7522e.chunk.css",
+    "static/js/2.42a2d28b.chunk.js",
+    "static/css/main.ccd4d8be.chunk.css",
+    "static/js/main.3f10932d.chunk.js"
+  ]
+}
